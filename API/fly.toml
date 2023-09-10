@@ -1,0 +1,22 @@
+# fly.toml app configuration file generated for blue-river-18 on 2023-09-10T21:15:49+04:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = "blue-river-18"
+primary_region = "ams"
+
+[build]
+  image = "carbonbasedai/store:latest"
+
+[env]
+  ASPNETCORE_URLS="http://+:8080"
+  StripeSettings__PublishableKey="pk_test_51NoMKsLtZh8FVoQEeipMpZeIkruam3FUhWDMHVO7Tft1pWLwoA19LduIy7uIPUQeqoqNH0tjZxvk9Ad9Mw0e9eKo00VdEF1pIb"
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ["app"]
